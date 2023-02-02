@@ -1,0 +1,55 @@
+doctype html
+html(lang="en")
+    head
+        title Products
+        style(type='text/css').
+            a {
+                text-decoration: none;
+                color: black;
+            }
+            div.product {
+                display: inline-block;
+                text-align: center;
+                width: 220px;
+                margin: 10px;
+            }
+            p{
+                display: inline;
+            }
+body
+    //-shows all items in a list with links to their individual pages
+    include ./headers
+    script(src='../products.js')
+    h1 Our products
+    span Category: 
+    select(onchange = "categorySelected()" id="categorySelect")
+        option(value="-1") Select
+        each category in categories 
+            option(value=category)=category
+    span           Sort by: 
+    select(onchange = "sortBy()" id="sortSelect")
+        option(value="-1") Select
+        option(value="stock") Stock (Decreasing) 
+        option(value="price") Price (Increasing)
+    br    
+    -let i = 0;
+    each product in products
+        div(class="product") 
+            a(href="/products/"+product._id width='100px' height ='100px')  
+                img(src=product.image
+                    width=200
+                    height=200
+                )
+            span=product.name +" $"+ product.price
+            br
+            button(id=product._id onclick="addToCart(this.id)") Add to Cart
+        if (i == 3)
+            br
+            -i = 0
+        else 
+            -i++;  
+            
+            
+
+        
+            

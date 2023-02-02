@@ -1,0 +1,63 @@
+html(lang="en")
+    head
+        title Cart
+        style(type='text/css').
+            a {
+                text-decoration: none;
+                color: black;
+            }
+            div.product {
+                display: inline-block;
+                text-align: center;
+                width: 220px;
+                margin: 10px;
+            }
+            p{
+                display: inline;
+            }        
+body
+    include ./headers
+    script(src='cart.js')
+    //-simple pug file
+    h1 Your cart
+    -let i = 0;
+    -let total = 0;
+    each product,index in products 
+        div(class="product") 
+            a(href="/products/"+product._id width='100px' height ='100px')  
+                img(src=product.image
+                    width=200
+                    height=200
+                )
+            br    
+            span=amounts[index] + "x "+product.name
+            br
+            span="$"+product.price*amounts[index]
+            -total+=product.price*amounts[index]
+            br
+
+        if (i == 3)
+            br
+            -i == 0;
+        else 
+            -i++;
+    br
+    br        
+    button(onclick="clearCart()") Clear Cart 
+    br
+    br
+    p="Your total is $"+total 
+    br
+    if user != null
+        button(onclick="order()") Order Products 
+    else 
+        p Please create an 
+            a(href='/login') account 
+            span to order our products.   
+
+
+
+
+
+    
+        

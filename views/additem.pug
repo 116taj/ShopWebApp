@@ -1,0 +1,42 @@
+doctype html
+html(lang="en")
+    head
+        title Add Item
+body
+    include ./headers
+    //-simple pug file
+    //-create 3 textfields and a button at the bottom which executes addvendor.js
+    script(src='additem.js')
+    h1 Add a new item 
+    p Name:
+        input(
+            id='name'
+            size=40
+        )
+    p Category: 
+        input(
+            id='category'
+            size=20
+        )        
+    p Vendor: 
+        input(
+            id='vendor'
+            size=20
+        )
+    p Price: $
+        input(
+            id='price'
+            size=2
+        )
+    p Stock: 
+        input(
+            id='stock'
+            size=2
+        )  
+    p Description: 
+        input(
+            id='description'
+            size=100
+        )                  
+    button(onclick='submit()') Submit 
+        

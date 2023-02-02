@@ -1,0 +1,41 @@
+[{
+	"name": "Banana",
+	"price": 2,
+	"stock": 4,
+	"discount": 0,
+	"description": "Yellow fruit enriched with potassium.",
+	"category": "Food",
+	"image": "/images/banana.png"
+}, {
+	"name": "Apple",
+	"price": 3,
+	"stock": 5,
+	"discount": 0,
+	"description": "Red fruit that grows on trees.",
+	"category": "Food",
+	"image": "/images/apple.png"
+}, {
+	"name": "Coca-Cola",
+	"price": 1,
+	"stock": 12,
+	"discount": 0,
+	"description": "Black soft drink that tastes good due its immense amount of sugar.",
+	"category": "Drink",
+	"image": "/images/coca-cola.png"
+}, {
+	"name": "Towel",
+	"price": 9,
+	"stock": 3,
+	"discount": 0,
+	"description": "Used to dry objects that are wet.",
+	"category": "Home",
+	"image": "/images/towel.png"
+}, {
+	"name": "Pencil",
+	"price": 1,
+	"stock": 30,
+	"discount": 0,
+	"description": "Used to write text on paper.",
+	"category": "Office",
+	"image": "/images/pencil.jpg"
+}]

@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+    head
+        title Items
+body
+    //-shows all items in a list with links to their individual pages
+    include ./headers
+    h1 Our Users
+    ul
+    each user in users
+        a(href="/users/"+user._id)=user.name
+        br
+        
+            
