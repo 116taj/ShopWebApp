@@ -198,11 +198,6 @@ function register(req,res,next){
         });     
     })
 }
-//logs out user
-function logout(req,res,next){
-    req.session.user = null;
-    res.status(200).send();
-}
 
 //posts review onto db
 function postReview(req,res,next){
@@ -381,13 +376,13 @@ function orderHistory(req,res,next){
     });
 
 }
-
+//log out user
 function logout(req,res,next){
     req.session.user = null;
     req.session.admin = false;
     getHome(req,res,next);
 }
-
+//check authorization
 function authorize(req,res,next){
     if (!req.session.admin)
         res.render('unauthorized',{user: req.session.user,admin: req.session.admin}); 

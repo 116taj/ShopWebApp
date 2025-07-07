@@ -23,6 +23,7 @@ body
     p(id='rating')=ratingString         
     p="Description: "+product.description   
     p(hidden id='id')=product._id
+    button(id=product._id onclick="addToCart(this.id)") Add to Cart
     if user != null 
         h2 Post a review 
         p Rating (1-5): 

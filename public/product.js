@@ -1,6 +1,6 @@
 
 
-//submit the review and send it to serverr
+//submit the review and send it to server
 function review(){
     let rating = document.getElementById("reviewRating").value;
 	let title = document.getElementById("title").value;
@@ -37,6 +37,14 @@ function review(){
 
 //adds an elem to cart
 
-function addToCart(){
-
+function addToCart(id){
+    let req = new XMLHttpRequest();
+    req.onreadystatechange = function() {
+    if(this.readyState==4 && this.status==400){
+        alert("you cannot purchase anymore of this item")
+    }
+    }
+    req.open("PUT",'/cart');
+    req.setRequestHeader("Content-Type", "application/json");
+    req.send(JSON.stringify({"item": id, "amount": 1}));  
 }
