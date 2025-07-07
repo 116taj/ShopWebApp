@@ -1,15 +1,11 @@
 
 const mongoose = require("mongoose");
 const Product = require("./ProductModel");
-const User = require("./UserModel");
-const Review = require("./ReviewModel");
 
 const fs = require("fs");
 //db initializer, extract artwork
 //then generates users based on artwork 
 let productArray = [];
-let artistList = [];
-let userList = [];
 fs.readdir('./products', (err, files) => {
 	console.log(files);
 		if (err)
@@ -30,11 +26,19 @@ mongoose.connect('mongodb://127.0.0.1/shop', {useNewUrlParser: true, useUnifiedT
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', async function() {
-	mongoose.connection.dropDatabase();
+	await mongoose.connection.dropDatabase();
 	console.log("Dropped database. Starting re-creation.");
+	let completedProducts = 0;
 	productArray.forEach(product => {
+		console.log(product)
 		product.save(function(err,result){
+			completedProducts++;
 			if(err) throw err;
+			if (completedProducts >= productArray.length){
+				console.log("Completed");
+			}
+
 		});
 	});
 });
+
