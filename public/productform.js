@@ -331,13 +331,12 @@ function submitNew(){
     let formData = new FormData();
     let img = document.getElementById("img").files[0];
     if (img == undefined){
-        alert("please input an image for the product!")
-        return;
-    }
+        img = "none.png";
+    } 
     formData.append("image",img);
     console.log(formData);
     imageReq.open("POST",'/image/'+ document.getElementById("name").value);
-    imageReq.send(formData);
+    imageReq.send(formData); 
 }
 
 function deleteProduct(){

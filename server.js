@@ -255,18 +255,10 @@ function addProduct(req,res,next){
 
 function updateProduct(req,res,next){
     let id = req.params.productID;
-    if (req.body.image != null){
-        Product.findOneAndUpdate({id: id},{name: req.body.name, price: req.body.price, stock: req.body.stock, description: req.body.description, category: req.body.category, image: req.body.image}).lean().exec(function(err,results){
-            console.log(results);
-            res.status(200).send();
-        });
-    }
-    else {
-        Product.findOneAndUpdate({id: id},{name: req.body.name, price: req.body.price, stock: req.body.stock, description: req.body.description, category: req.body.category}).lean().exec(function(err,results){
-            console.log(results);
-            res.status(200).send();
-        });
-    }
+    Product.findOneAndUpdate({_id: id},{name: req.body.name, price: req.body.price, stock: req.body.stock, description: req.body.description, category: req.body.category}).lean().exec(function(err,results){
+        console.log(results);
+        res.status(200).send();
+    });
 }   
 
 function deleteProduct(req,res,next){
@@ -282,7 +274,11 @@ function deleteProduct(req,res,next){
 }
 
 function uploadImage(req,res,next){
-    let img = req.files.image;    
+    if (req.files == null){
+        res.status(200).send("none.png");
+        return;
+    } 
+    let img = req.files.image;   
     let extension = ".png"
     if (img.mimetype != "image/png" && img.mimetype != "image/jpeg")
         res.status(400).send();
