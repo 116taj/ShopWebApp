@@ -1,6 +1,3 @@
-//Name: Taj Randhawa
-//github: 116taj
-
 const express = require('express');
 const mongoose = require("mongoose");
 const pug = require('pug');
